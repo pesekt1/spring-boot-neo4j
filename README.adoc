@@ -8,13 +8,7 @@ Spring Data Neo4j enables convenient integration of Neo4j in your Spring-based a
 It provides object-graph mapping (OGM) functionality and other features common to the Spring Data projects.
 
 [NOTE]
-This project uses Spring Data Neo4j 6. The previous version, using SDN 5 + OGM can still be accessed under the
-https://github.com/neo4j-examples/movies-java-spring-data-neo4j/tree/sdn5-ogm branch.
-
-[NOTE]
-For a broader overview of Spring Data Neo4j 6 with the same dataset, you can access the
-https://github.com/neo4j-examples/movies-java-spring-data-neo4j/tree/sdn6-full-example branch.
-
+This project uses Spring Data Neo4j 6.
 The example project is described in detail on the https://neo4j.com/developer/example-project/[Neo4j Developer Site]
 
 The project uses Java 11.
@@ -31,7 +25,7 @@ These are the components of our Web Application:
 
 Provision a database quickly with https://sandbox.neo4j.com/?usecase=movies[Neo4j Sandbox] or https://neo4j.com/cloud/aura/[Neo4j Aura].
 
-== Configuration options
+== Configuration options - public API with data
 
 [%header,cols=2*]
 |===
@@ -57,4 +51,4 @@ Provision a database quickly with https://sandbox.neo4j.com/?usecase=movies[Neo4
 |4
 |===
 
-Please set `NEO4J_VERSION` to `3.5` when running Neo4j 3.5.x. Leave as is otherwise.
+This will use a public API, if you have your own database running just connect to that instead.
