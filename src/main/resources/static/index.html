@@ -87,6 +87,7 @@
             $.get("/movie/" + encodeURIComponent(title),
                     function (data) {
                         if (!data) return;
+                        console.log(data);
                         $("#title").text(data.title);
                         $("#poster").attr("src","http://neo4j-documentation.github.io/developer-resources/language-guides/assets/posters/"+encodeURIComponent(data.title)+".jpg");
                         var $list = $("#crew").empty();
