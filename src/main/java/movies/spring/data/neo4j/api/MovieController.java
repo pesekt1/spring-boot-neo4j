@@ -1,13 +1,10 @@
 package movies.spring.data.neo4j.api;
 
+import movies.spring.data.neo4j.movies.Movie;
 import movies.spring.data.neo4j.movies.MovieDetailsDto;
 import movies.spring.data.neo4j.movies.MovieResultDto;
 import movies.spring.data.neo4j.movies.MovieService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -29,6 +26,28 @@ class MovieController {
 	@PostMapping("/movie/{title}/vote")
 	public int voteByTitle(@PathVariable("title") String title) {
 		return movieService.voteInMovieByTitle(title);
+	}
+
+	@PostMapping("/relationships")
+	public void createRelationship(
+			@RequestParam("title") String title,
+			@RequestParam("actorName") String actorName,
+			@RequestParam("role") String role) {
+		movieService.createRelationship(title, actorName, role);
+	}
+
+	@PostMapping("/movies")
+	public Movie createMovie(
+			@RequestParam("title") String title,
+			@RequestParam("release") Integer release,
+			@RequestParam("tagline") String tagline) {
+		return movieService.createMovie(title, release, tagline);
+	}
+
+	@DeleteMapping("/movie")
+	public long deleteMovie(
+			@RequestParam("title") String title) {
+		return movieService.deleteByTitle(title);
 	}
 
 	@GetMapping("/search")

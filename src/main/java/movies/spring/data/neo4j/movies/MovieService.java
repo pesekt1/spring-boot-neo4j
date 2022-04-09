@@ -72,6 +72,18 @@ public class MovieService {
 				.collect(Collectors.toList());
 	}
 
+	public Movie createMovie(String title, Integer release, String tagline){
+		return this.movieRepository.createMovie(title,release,tagline);
+	}
+
+	public void createRelationship(String title, String actorName, String role){
+		movieRepository.createRelationship(title,actorName,role);
+	}
+
+	public long deleteByTitle(String title){
+		return movieRepository.deleteByTitle(title);
+	}
+
 	/**
 	 * This is an example of when you might want to use the pure driver in case you have no need for mapping at all, neither in the
 	 * form of the way the {@link org.springframework.data.neo4j.core.Neo4jClient} allows and not in form of entities.
