@@ -25,7 +25,6 @@ interface MovieRepository extends Repository<Movie, String> {
 			@Param("tagline") String tagline);
 
 
-	//this method should be in RelationshipRepository (but for simplicity we do it in MovieRepository)
 	@Query("MATCH (m:Movie {title: $title})\n" +
 			"MATCH (p:Person {name: $actorName})\n" +
 			"CREATE (p)-[r:ACTED_IN {roles:[$role]}]->(m)\n" +
@@ -37,5 +36,5 @@ interface MovieRepository extends Repository<Movie, String> {
 
 
 	long deleteByTitle(String title);
-
+	
 }
