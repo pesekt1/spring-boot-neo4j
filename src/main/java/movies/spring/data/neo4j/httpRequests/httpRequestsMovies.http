@@ -16,7 +16,7 @@ Content-Type: application/json
 GET http://{{host}}/graph HTTP/1.1
 Content-Type: application/json
 
-### create new tutorial
+###
 POST http://{{host}}/movie/The Matrix/vote HTTP/1.1
 Content-Type: application/json
 
@@ -26,3 +26,32 @@ client.test("Request executed successfully", function() {
 });
 %}
 
+### HTTP API: https://neo4j.com/docs/http-api
+GET http://localhost:7474
+Accept: application/json
+
+### this needs authorization and the endpoint should specify the database
+POST http://localhost:7474/db/neo4j/tx
+Accept: application/json
+Authorization:
+
+{
+  "statements": [
+    {
+      "statement": "CREATE (n $props) RETURN n",
+      "parameters": {
+        "props": {
+          "name": "My Node"
+        }
+      }
+    },
+    {
+      "statement": "CREATE (n $props) RETURN n",
+      "parameters": {
+        "props": {
+          "name": "Another Node"
+        }
+      }
+    }
+  ]
+}
